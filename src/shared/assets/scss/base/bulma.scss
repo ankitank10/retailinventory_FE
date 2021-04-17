@@ -1,0 +1,16 @@
+/*!
+ * Bootstrap Grid v4.4.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+
+@charset "utf-8";
+
+//Styles overriding
+$primary: $primary-color;
+$spacing-values: ("0": 0, "1": 5px, "2": 10px, "3": 15px, "4": 20px, "5": 25px, "6": 30px) !default;
+
+@import './node_modules/bulma/bulma';
+

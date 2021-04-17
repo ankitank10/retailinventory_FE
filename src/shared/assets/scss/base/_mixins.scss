@@ -1,0 +1,520 @@
+// Clear floats Mixins
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+@mixin secondaryTitle() {
+  &.base {
+    font-size: $base-font;
+    line-height: 1.38;
+  }
+}
+
+/*
+  Media Query Mixins
+*/
+
+// Small devices (Mobile Devices)
+@mixin sm($minmax) {
+  @if $minmax == $min {
+    @media (min-width: #{$screen-sm-min}) {
+      @content;
+    }
+  } @else {
+    @media (max-width: #{$screen-sm-min -1px}) {
+      @content;
+    }
+  }
+}
+
+// Medium devices (Tablets Potrait View)
+@mixin md($minmax) {
+  @if $minmax == $min {
+    @media (min-width: #{$screen-md-min}) {
+      @content;
+    }
+  } @else {
+    @media (max-width: #{$screen-md-min - 1px}) {
+      @content;
+    }
+  }
+}
+
+// Large devices (Tablet Landscape and Medium monitors)
+@mixin lg($minmax) {
+  @if $minmax == $min {
+    @media (min-width: #{$screen-lg-min}) {
+      @content;
+    }
+  } @else {
+    @media (max-width: #{$screen-lg-min - 1px}) {
+      @content;
+    }
+  }
+}
+
+// Extra large devices (Desktops)
+@mixin xl($minmax) {
+  @if $minmax == $min {
+    @media (min-width: #{$screen-xl-min}) {
+      @content;
+    }
+  } @else {
+    @media (max-width: #{$screen-xl-min - 1px}) {
+      @content;
+    }
+  }
+}
+
+// HD Screen devices (Desktops)
+@mixin xxl($minmax) {
+  @if $minmax == $min {
+    @media (min-width: #{$screen-xxl-min}) {
+      @content;
+    }
+  } @else {
+    @media (max-width: #{$screen-xxl-min - 1px}) {
+      @content;
+    }
+  }
+}
+
+// Spacing Classes Generator Mixin
+
+//padding, margin spacer vars
+$spacer: 5;
+$max: 8;
+$zero: 0;
+$one: unquote(($spacer) + "px");
+$two: unquote(($spacer * 2) + "px");
+$three: unquote(($spacer * 3) + "px");
+$four: unquote(($spacer * 4) + "px");
+$five: unquote(($spacer * 5) + "px");
+$six: unquote(($spacer * 6) + "px");
+$seven: unquote(($spacer * 7) + "px");
+$eight: unquote(($spacer * 8) + "px");
+$nine: unquote(($spacer * 9) + "px");
+$ten: unquote(($spacer * 10) + "px");
+$eleven: unquote(($spacer * 11) + "px");
+$twelve: unquote(($spacer * 12) + "px");
+$thirteen: unquote(($spacer * 13) + "px");
+$fourteen: unquote(($spacer * 14) + "px");
+$fifteen: unquote(($spacer * 15) + "px");
+$sixteen: unquote(($spacer * 16) + "px");
+
+$spaces: (
+  $zero,
+  $one,
+  $two,
+  $three,
+  $four,
+  $five,
+  $six,
+  $seven,
+  $eight,
+  $nine,
+  $ten,
+  $eleven,
+  $twelve,
+  $thirteen,
+  $fourteen,
+  $fifteen,
+  $sixteen
+); // Adjust this to include the pixel amounts you need.
+$sides: (x, y, all, top, bottom, left, right); // Leave this variable alone
+
+$i: 0;
+@each $space in $spaces {
+  @each $side in $sides {
+    @if $side == all {
+      .p-#{$i} {
+        padding: #{$space} #{$space};
+      }
+    } @else if $side == x {
+      .px-#{$i} {
+        padding-left: #{$space} !important;
+        padding-right: #{$space} !important;
+      }
+    } @else if $side == y {
+      .py-#{$i} {
+        padding-top: #{$space} !important;
+        padding-bottom: #{$space} !important;
+      }
+    } @else {
+      .p#{str-slice($side, 0, 1)}-#{$i} {
+        padding-#{$side}: #{$space} !important;
+      }
+    }
+  }
+  @each $side in $sides {
+    @if $side == all {
+      .m-#{$i} {
+        margin: #{$space} #{$space} !important;
+        @include md($max) {
+          margin: #{$space}/ 2 #{$space}/ 2;
+        }
+      }
+    } @else if $side == x {
+      .mx-#{$i} {
+        margin-left: #{$space} !important;
+        margin-right: #{$space} !important;
+      }
+      .mx-auto{
+        margin-left: auto;
+        margin-right: auto;
+      }
+    } @else if $side == y {
+      .my-#{$i} {
+        margin-top: #{$space} !important;
+        margin-bottom: #{$space} !important;
+      }
+      .my-auto{
+        margin-bottom: auto;
+        margin-top: auto;
+      }
+    } @else {
+      .m#{str-slice($side, 0, 1)}-#{$i} {
+        margin-#{$side}: #{$space} !important;
+      }
+    }
+  }
+  $i: $i + 1;
+}
+
+$i: 0;
+@each $space in $spaces {
+  @each $side in $sides {
+    @include xl($max) { //@media (max-width : 1200px){ //
+      @if $side == all {
+        .tab-p-#{$i} {
+          padding: #{$space} #{$space} !important;
+        }
+      } @else if $side == x {
+        .tab-px-#{$i} {
+          padding-left: #{$space} !important;
+          padding-right: #{$space} !important;
+        }
+        .tab-px-auto {
+          padding-left: auto !important;
+          padding-right: auto !important;
+        }
+      } @else if $side == y {
+        .tab-py-#{$i} {
+          padding-top: #{$space} !important;
+          padding-bottom: #{$space} !important;
+        }
+        .tab-py-auto {
+          padding-top: auto !important;
+          padding-bottom: auto !important;
+        }
+      } @else {
+        .tab-p#{str-slice($side, 0, 1)}-#{$i} {
+          padding-#{$side}: #{$space} !important;
+        }
+      }
+    }
+  }
+  @each $side in $sides {
+    @include xl($max) { // @media (max-width : 1200px){ //  @include md($max) {
+      @if $side == all {
+        .tab-m-#{$i} {
+          margin: #{$space} #{$space} !important;
+        }
+      } @else if $side == x {
+        .tab-mx-#{$i} {
+          margin-left: #{$space} !important;
+          margin-right: #{$space} !important;
+        }
+        .tab-mx-auto {
+          margin-right: auto !important;
+          margin-left: auto !important;
+        }
+      } @else if $side == y {
+        .tab-my-#{$i} {
+          margin-top: #{$space} !important;
+          margin-bottom: #{$space} !important;
+        }
+        .tab-my-auto {
+          margin-top: auto !important;
+          margin-bottom: auto !important;
+        }
+      } @else {
+        .tab-m#{str-slice($side, 0, 1)}-#{$i} {
+          margin-#{$side}: #{$space} !important;
+        }
+      }
+    }
+  }
+  $i: $i + 1;
+}
+
+$j: 0;
+@each $space in $spaces {
+  @each $side in $sides {
+    @include md($max) {
+      //@media (max-width : 576px){ //
+      @if $side == all {
+        .mob-p-#{$j} {
+          padding: #{$space} #{$space} !important;
+        }
+      } @else if $side == x {
+        .mob-px-#{$j} {
+          padding-left: #{$space} !important;
+          padding-right: #{$space} !important;
+        }
+      } @else if $side == y {
+        .mob-py-#{$j} {
+          padding-top: #{$space} !important;
+          padding-bottom: #{$space} !important;
+        }
+      } @else {
+        .mob-p#{str-slice($side, 0, 1)}-#{$j} {
+          padding-#{$side}: #{$space} !important;
+        }
+      }
+    }
+  }
+  @each $side in $sides {
+    @include md($max) {
+      // @media (max-width : 576px){ //  @include md($max) {
+      @if $side == all {
+        .mob-m-#{$j} {
+          margin: #{$space} #{$space} !important;
+        }
+      } @else if $side == x {
+        .mob-mx-#{$j} {
+          margin-left: #{$space} !important;
+          margin-right: #{$space} !important;
+        }
+        .mob-mx-auto{
+          margin-left: auto;
+          margin-right: auto;
+        }
+      } @else if $side == y {
+        .mob-my-#{$j} {
+          margin-top: #{$space} !important;
+          margin-bottom: #{$space} !important;
+        }
+        .mob-my-auto{
+          margin-bottom: auto;
+          margin-top: auto;
+        }
+      } @else {
+        .mob-m#{str-slice($side, 0, 1)}-#{$j} {
+          margin-#{$side}: #{$space} !important;
+        }
+      }
+    }
+  }
+  $j: $j + 1;
+}
+
+
+$k: 0;
+@each $space in $spaces {
+  @each $side in $sides {
+    @include xxl($min) {
+      //@media (max-width : 1600px){ //
+      @if $side == all {
+        .hd-p-#{$k} {
+          padding: #{$space} #{$space} !important;
+        }
+      } @else if $side == x {
+        .hd-px-#{$k} {
+          padding-left: #{$space} !important;
+          padding-right: #{$space} !important;
+        }
+      } @else if $side == y {
+        .hd-py-#{$k} {
+          padding-top: #{$space} !important;
+          padding-bottom: #{$space} !important;
+        }
+      } @else {
+        .hd-p#{str-slice($side, 0, 1)}-#{$k} {
+          padding-#{$side}: #{$space} !important;
+        }
+      }
+    }
+  }
+  @each $side in $sides {
+    @include xxl($min) {
+      // @media (max-width : 1600px){ //  @include md($max) {
+      @if $side == all {
+        .hd-m-#{$k} {
+          margin: #{$space} #{$space} !important;
+        }
+      } @else if $side == x {
+        .hd-mx-#{$k} {
+          margin-left: #{$space} !important;
+          margin-right: #{$space} !important;
+        }
+      } @else if $side == y {
+        .hd-my-#{$k} {
+          margin-top: #{$space} !important;
+          margin-bottom: #{$space} !important;
+        }
+      } @else {
+        .hd-m#{str-slice($side, 0, 1)}-#{$k} {
+          margin-#{$side}: #{$space} !important;
+        }
+      }
+    }
+  }
+  $k: $k + 1;
+}
+
+
+
+@each $type, $val in $discovery {
+  .discovery-#{$type} { //discovery-h2
+    font-size: $val !important;
+  }
+}
+/* Mobile stylings */
+@include md($max){
+  @each $type, $val in $discovery-mob {
+    .discovery-mob-#{$type} { //discovery-mob-h2
+      font-size: $val !important;
+    }
+  }
+}
+
+@each $type, $val in $font-weights {
+  .fw-#{$type} { //fw-bold
+    font-weight: $val !important;
+  }
+}
+
+@each $val in $text-align {
+  .ta-#{$val} { //ta-center
+    text-align: $val !important;
+  }
+}
+
+@each $val in $text-transforms {
+  .tt-#{$val} { //tt-uppercase
+    text-transform: $val !important;
+  }
+}
+
+@each $val in $text-decorations {
+  .td-#{$val} { //td-underline
+    text-decoration: $val !important;
+  }
+}
+@include md($max){
+  @each $val in $text-transforms {
+    .tt-mob-#{$val} { //tt-uppercase
+      text-transform: $val !important;
+    }
+  }
+}
+
+@each $val in $cursors {
+  .c-#{$val} { //c-pointer
+    cursor: $val !important;
+  }
+}
+
+@mixin roundDiv() {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/*generic modifications for rtl start*/
+/*it will change left margin/padding to right and vice versa*/
+
+.rtl{
+  @for $i from 0 through 12 {
+    .ml-#{$i} {
+      margin-right: $i * 5px !important;
+      margin-left: 0 !important;
+    }
+    .mr-#{$i} {
+      margin-left: $i * 5px !important;
+      margin-right: 0 !important;
+    }
+    .pl-#{$i} {
+      padding-right: $i * 5px !important;
+      padding-left: 0 !important;
+    }
+    .pr-#{$i} {
+      padding-left: $i * 5px !important;
+      padding-right: 0 !important;
+    }
+  }
+  @include xl($max) {
+    @for $i from 0 through 12 {
+      .tab-ml-#{$i} {
+        margin-right: $i * 5px !important;
+        margin-left: 0 !important;
+      }
+      .tab-mr-#{$i} {
+        margin-left: $i * 5px !important;
+        margin-right: 0 !important;
+      }
+      .tab-pl-#{$i} {
+        padding-right: $i * 5px !important;
+        padding-left: 0 !important;
+      }
+      .tab-pr-#{$i} {
+        padding-left: $i * 5px !important;
+        padding-right: 0 !important;
+      }
+    }
+  }
+  @include md($max) {
+    @for $i from 0 through 12 {
+      .mob-ml-#{$i} {
+        margin-right: $i * 5px !important;
+        margin-left: 0 !important;
+      }
+      .mob-mr-#{$i} {
+        margin-left: $i * 5px !important;
+        margin-right: 0 !important;
+      }
+      .mob-pl-#{$i} {
+        padding-right: $i * 5px !important;
+        padding-left: 0 !important;
+      }
+      .mob-pr-#{$i} {
+        padding-left: $i * 5px !important;
+        padding-right: 0 !important;
+      }
+    }
+  }
+  @include md($min) {
+    .offset-md-4 {
+      margin-right: 33.333334%;
+      margin-left: 0;
+    }
+    .offset-md-2 {
+      margin-right: 16.666667%;
+      margin-left: 0;
+    }
+  }
+  @include xl($min){
+    .offset-xl-4 {
+      margin-right: 33.333334%;
+      margin-left: 0;
+    }
+    .offset-xl-2 {
+      margin-right: 16.666667%;
+      margin-left: 0;
+    }
+  }
+  .ta-left {
+    text-align: right;
+  }
+}
+
+/*generic modifications for rtl end*/

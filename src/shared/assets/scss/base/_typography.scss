@@ -1,0 +1,301 @@
+.page-heading {
+  font-size: $font-lg;
+  font-weight: 600;
+  line-height: 1.1;
+  color: $primary-raisin-black;
+  @include secondaryTitle(); // add sm class for font-size 16px
+
+  &.xl {
+    font-size: $font-xl;
+  }
+
+  &.xxl {
+    font-size: $font-xxl;
+  }
+
+  &.success {
+    color: $greenish-teal;
+  }
+
+  &.warning {
+    color: $rosy-pink;
+  }
+
+  &.error {
+    color: $rosy-pink;
+  }
+
+  &.info {
+    color: $blue;
+
+    & p {
+      color: $nero;
+    }
+  }
+
+  &.white-font {
+    color: #ffffff
+  }
+
+  &.disabled {
+    color: $radio-border;
+  }
+
+  &.sm {
+    font-size: $font-sm;
+  }
+
+  &.xs {
+    font-size: $font-xs;
+  }
+
+  &.md {
+    font-size: $font-md;
+  }
+
+  &.base {
+    font-size: $base-font;
+  }
+
+  &.upper-text {
+    text-transform: uppercase;
+  }
+
+  &.unset-line-height {
+    line-height: unset;
+  }
+
+  &.lineHeight-2 {
+    line-height: 2;
+  }
+  &.xxxs{
+  font-size: $font-xxxs
+}
+}
+
+.section-heading {
+  font-size: $font-md;
+  font-weight: 700;
+  line-height: 1.22;
+  color: $primary-raisin-black;
+  @include secondaryTitle(); // add sm class for font-size 16px
+  display: inline-block;
+
+  &.sm {
+    font-size: $font-sm;
+  }
+
+  &.disabled {
+    color: $radio-border;
+  }
+
+  &.xs {
+    font-size: $font-xs;
+  }
+
+  &.md {
+    font-size: $base-font;
+  }
+
+  &.lg {
+    font-size: $font-lg;
+  }
+
+  &.xxl {
+    font-size: $font-xxl;
+  }
+
+  &.xxxl {
+    font-size: 2.5rem;
+  }
+
+  &.white {
+    color: $primary-white;
+  }
+
+  &.red {
+    color: $primary-color;
+
+    &.disabled {
+      opacity: 0.3;
+    }
+  }
+
+  &.upper-text {
+    text-transform: uppercase;
+  }
+
+  &.other-grey-color {
+    color: $primary-border-color
+  }
+  &.secodary-grey{
+    color:  $secondary-grey
+  }
+}
+
+.body-text {
+  font-size: $base-font;
+  line-height: 1.38;
+  font-weight: 400;
+
+  &.sm {
+    font-size: $font-sm;
+  }
+
+  &.xs {
+    font-size: $font-xs;
+  }
+
+  &.color-nero {
+    color: $nero;
+  }
+
+  &.color-brownish-grey {
+    color: $secondary-grey;
+  }
+}
+
+.warning-italic {
+  color: $rosy-pink;
+  font-style: italic;
+  font-size: $font-xs;
+  padding: 5px 10px;
+  margin: 0;
+  font-weight: 400;
+}
+
+.currency-marker {
+  font-size: $font-xs;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: top;
+
+  &.align-baseline {
+    vertical-align: baseline;
+  }
+
+  &.lg {
+    font-size: $font-md;
+    line-height: 1;
+  }
+
+  &.discovery-currency {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    right: 10px;
+    margin-right: 0;
+    z-index: 1;
+    @include md($max) {
+      display: block;
+    }
+    &.currency-egp {
+      right: unset;
+      left: 10px;
+      + .discovery-input {
+        padding-left: 45px;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.info-label {
+  font-size: $font-xs;
+  font-weight: 600;
+  line-height: 1.83;
+  color: $secondary-grey;
+  display: block;
+  text-transform: uppercase;
+
+  &.defaultCase {
+    text-transform: none;
+  }
+
+  &.sm {
+    font-size: $font-sm !important;
+  }
+  &.base {
+    font-size: $base-font !important;
+  }
+
+  &.black {
+    color: $primary-raisin-black;
+  }
+}
+
+.info {
+  @extend .page-heading;
+  text-transform: initial;
+}
+
+.rtl {
+  .page-heading {
+    text-align: right;
+  }
+
+  .currency-marker {
+    &.lg {
+      line-height: 1;
+    }
+  }
+}
+
+@include md($max) {
+  .page-heading {
+    font-size: $font-sm;
+
+    &.sm {
+      font-size: $font-xs;
+    }
+
+    &.mob-xl{
+      font-size: $font-xl;
+    }
+  }
+
+  .section-heading {
+
+    &.sm,
+    &.mob {
+      font-size: $font-sm;
+      line-height: 1.22;
+    }
+    &.xxl {
+      font-size: $font-xl;
+    }
+
+    &.xl {
+      font-size: $font-xl;
+    }
+
+    &.basic {
+      font-size: $base-font;
+    }
+  }
+
+  .body-text {
+    font-size: $font-xs;
+
+    &.sm,
+    &.mob {
+      font-size: $font-sm;
+    }
+
+    &.base {
+      font-size: $base-font;
+    }
+  }
+
+  .currency-marker {
+    font-size: $font-xs;
+    line-height: normal;
+
+    &.lg {
+      font-size: $font-md;
+      line-height: 1;
+    }
+  }
+}

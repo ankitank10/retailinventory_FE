@@ -1,0 +1,267 @@
+* {
+  font-family: "Barlow", sans-serif;
+}
+
+body,
+html {
+  font-family: "Barlow", sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  color: $primary-raisin-black;
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.ff-barlow {
+  font-family: "Barlow", sans-serif !important;
+}
+
+/*common styling for border start*/
+.border {
+  &-top {
+    border-top: 1px solid $primary-border-color;
+
+    &-none {
+      border-top: none;
+    }
+  }
+
+  &-right {
+    border-right: 1px solid $primary-border-color;
+
+    &-none {
+      border-right: none;
+    }
+  }
+
+  &-bottom {
+    border-bottom: 1px solid $primary-border-color;
+
+    &-none {
+      border-bottom: none;
+    }
+  }
+
+  &-left {
+    border-left: 1px solid $primary-border-color;
+
+    &-none {
+      border-left: none;
+    }
+  }
+
+  &-all {
+    border: 1px solid $primary-border-color;
+
+    &-none {
+      border: none !important;
+    }
+  }
+
+  &-x {
+    border-left: 1px solid $primary-border-color;
+    border-right: 1px solid $primary-border-color;
+
+    &-none {
+      border-left: none;
+      border-right: none;
+    }
+  }
+
+  &-y {
+    border-top: 1px solid $primary-border-color;
+    border-bottom: 1px solid $primary-border-color;
+
+    &-none {
+      border-top: none;
+      border-bottom: none;
+    }
+  }
+  &-dark {
+    border: 1px solid $primary-raisin-black !important;
+  }
+  &-light {
+    border: 1px solid $primary-white !important;
+  }
+}
+
+/*common styling for border end*/
+
+.stop-overflow {
+  flex-flow: row nowrap;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+//can give height of full screen to the element
+.fill-height {
+  height: 100vh;
+  //  margin-top: -100px;  //to be inserted once the header is introduced
+}
+
+.fill-width {
+  width: 100%;
+}
+
+.width-max-content {
+  width: max-content;
+}
+
+.pos {
+  &-relative {
+    position: relative;
+  }
+
+  &-absolute {
+    position: absolute;
+  }
+
+  &-fixed {
+    position: fixed;
+  }
+}
+
+.rotate {
+  &-left {
+    transform: rotate(-90deg);
+  }
+  &-right {
+    transform: rotate(90deg);
+  }
+}
+
+.max-content {
+  max-width: max-content;
+}
+
+.shadow-card {
+  border-radius: 10px;
+  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04);
+  border: 1px solid $primary-border-color;
+
+  &-lg {
+    @include lg($min) {
+      border-radius: 10px;
+      box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04);
+      border: 1px solid $primary-border-color;
+    }
+  }
+
+  &-sm {
+    @include lg($max) {
+      border-radius: 10px;
+      box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.04);
+      border: 1px solid $primary-border-color;
+    }
+  }
+
+  &.only-bottom {
+    @include md($max) {
+      border-radius: unset;
+      box-shadow: unset;
+      border: unset;
+      border-bottom: 1px solid $primary-border-color;
+    }
+  }
+}
+
+.underline {
+  border: solid 2px $primary-color;
+  width: 60px;
+  border-radius: 3px;
+  background-color: $primary-color;
+
+  &-small {
+    width: 30px;
+  }
+}
+
+.full-width-ht {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.remove-hyperlink-decoration {
+  text-decoration: none;
+}
+
+.separator {
+  width: 100%;
+  border-color: $secondary-grey2;
+  border-radius: 0.5px;
+  border-style: solid;
+  border-width: 1px;
+  border-top: 0;
+
+  &.vertical {
+    width: 1px;
+    height: 75px;
+    margin: 0 5px;
+    align-self: center;
+    border-right: 0;
+  }
+
+  &.no-sep-mobile {
+    @include md($max) {
+      display: none;
+    }
+  }
+
+  &.signature-vertical {
+    align-self: normal;
+    height: auto;
+  }
+}
+
+.round-div {
+  @include roundDiv();
+}
+
+[class^="col-md-"] {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.mt-150 {
+  margin-top: 150px;
+}
+
+@include md($max) {
+  .optional-landing-page {
+    background-color: #f5f5f9;
+    border-radius: 10px;
+  }
+
+  .mob-w-350 {
+    width: 350px;
+  }
+
+  .flex-mob {
+    &-col {
+      flex-direction: column;
+    }
+  }
+}
