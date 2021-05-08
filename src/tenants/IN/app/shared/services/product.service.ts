@@ -24,7 +24,6 @@ export class ProductService {
 
   getSingleProduct(routeParams): Observable<any> {
     return this.apiService.ApiClientObj.get(`${this.url}products/:productId/`, { routeParams });
-
     // return this.http.get<ProductModelServer>(this.url + 'products/' + id);
   }
 
