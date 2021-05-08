@@ -1,0 +1,58 @@
+<div class="container-fluid">
+    <app-swiper [items]="banners" [id]="'bannerSlider'" [breakpoints]="bannerSwiperBreakpoints">
+        <ng-template let-item #swiperTemplateRef>
+            <div class="swiper-slide product-wrapper d-flex flex-column p-4 col-md-4">
+                <app-banner [bannerItem]="item"></app-banner>
+            </div>
+        </ng-template>
+    </app-swiper>
+</div>
+
+<div class="new_arrivals container-fluid mt-4 p-8 ">
+    <h3 class="page-heading xl">New Arrivals</h3>
+    <div class="d-flex flex-wrap custom-scroll mt-4">
+        <div class="product-card me-5 border border-2 rounded-3" *ngFor="let item of products">
+            <app-product-card [product]="item"></app-product-card>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- New Products -->
+    <h3>Trending</h3>
+    <h3>Offers</h3>
+
+    <div class="mb-8">
+        <app-swiper [items]="products" [id]="'productsSlider'">
+            <ng-template let-item #swiperTemplateRef>
+                <div class="swiper-slide product-wrapper d-flex flex-column p-4 col-md-4">
+                    <img [src]="item.image" alt="{{item.name}}" class="card-img-top">
+                    <div class="product-header p-2">
+                        <p>{{item.name | titlecase}}</p>
+                    </div>
+                    <div class="product-body section-heading md">
+                        <h6>{{item.description.substr(0, 40)}} ....</h6>
+                        <p class="lead">{{item.price | currency:'USD'}}</p>
+                    </div>
+
+                    <div class="row d-flex justify-content-center border-primary my-3">
+                        <button class="btn btn-outline-primary btn-sm btn-block" [class.disabled]="item.quantity < 1"
+                            [class.btn-outline-danger]="item.quantity < 1" [disabled]="item.quantity < 1">
+                            {{ item.quantity < 1 ? "NO STOCK" : "Add To Cart"}}
+                        </button>
+                    </div>
+                </div>
+            </ng-template>
+        </app-swiper>
+        <app-swiper [items]="products" [id]="'productsCardSlider'" [breakpoints]="productCardSwiperBreakpoints">
+            <ng-template let-item #swiperTemplateRef>
+                <div class="swiper-slide product-wrapper d-flex flex-column p-4 col-md-4">
+                    <app-product-card [product]="item"></app-product-card>
+                </div>
+            </ng-template>
+        </app-swiper>
+
+    </div>
+
+
+</div>

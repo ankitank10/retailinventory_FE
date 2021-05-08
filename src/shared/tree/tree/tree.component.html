@@ -1,0 +1,10 @@
+<ul *ngIf="treeData">
+    <li *ngFor="let node of treeData" class="node-item">
+        <span *ngIf="node.subcategories" (click)="toggleChild(node)">
+            <i class="fas fa-chevron-down" *ngIf="!node.expanded"></i>
+            <i class="fas fa-chevron-up" *ngIf="node.expanded"></i>
+        </span>
+        <span (click)="handleClick(node)" [ngClass]="{'node-active': node.active}">{{ node.name }} </span>
+        <app-tree *ngIf="node.expanded" [treeData]="node.subcategories"></app-tree>
+    </li>
+</ul>

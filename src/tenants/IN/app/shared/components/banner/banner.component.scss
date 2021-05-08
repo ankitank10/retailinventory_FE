@@ -1,0 +1,11 @@
+.banner_wrapper {
+  background-position: center center;
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+  display: inline-block;
+  .wrapper_content {
+    margin-top: 60px;
+    margin-left: 60px;
+  }
+}

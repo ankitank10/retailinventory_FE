@@ -1,0 +1,16 @@
+.product-wrapper {
+  min-width: 300px;
+  min-height: 350px;
+  .product-img {
+    width: 150px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .product-header {
+    width: 100%;
+  }
+
+  .product-body {
+  }
+}

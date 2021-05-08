@@ -1,0 +1,8 @@
+<div [ngStyle]="{'background-image': 'linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)),url(' + bannerItem.imageUrl + ')'}"
+    class="banner_wrapper">
+    <div class="wrapper_content">
+        <div class="fs-1 text-white fw-bold cursor-pointer">{{bannerItem.title}}</div>
+        <a class="btn btn-outline-white rounded-3" [routerLink]="['/category/'+bannerItem.categoryId+'/0']">
+            Shop Now</a>
+    </div>
+</div>

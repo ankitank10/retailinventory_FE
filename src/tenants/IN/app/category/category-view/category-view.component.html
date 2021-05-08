@@ -1,0 +1,14 @@
+<div class="container-fluid mt-4 d-flex bg-white">
+    <div class="filter_wrapper">
+        <app-tree [treeData]="categoryNodes"></app-tree>
+    </div>
+    <div class="content_wrapper">
+        <app-swiper [items]="products" [id]="'productsCardSlider'">
+            <ng-template let-item #swiperTemplateRef>
+                <div class="swiper-slide product-wrapper d-flex flex-column p-4 col-md-4">
+                    <app-product-card [product]="item"></app-product-card>
+                </div>
+            </ng-template>
+        </app-swiper>
+    </div>
+</div>

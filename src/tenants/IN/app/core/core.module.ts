@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { InterceptorService } from './interceptors/interceptor.service';
-import {HeaderComponent} from './components/header/header.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MdbModule } from 'mdb-angular-ui-kit';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, MdbModule, RouterModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -15,6 +17,6 @@ import {HeaderComponent} from './components/header/header.component';
     },
   ],
   declarations: [HeaderComponent],
-  exports: [FormsModule, HttpClientModule, HeaderComponent],
+  exports: [FormsModule, HttpClientModule, MdbModule, HeaderComponent],
 })
-export class CoreModule {}
+export class CoreModule { }

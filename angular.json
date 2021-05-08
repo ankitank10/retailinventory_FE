@@ -28,10 +28,18 @@
               "src/tenants/IN/assets"
             ],
             "styles": [
+              "src/shared/assets/scss/utility/swiper.min.css",
               "src/shared/assets/scss/style.scss",
               "src/tenants/IN/assets/scss/styles-in.scss"
             ],
-            "scripts": []
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/shared/assets/scss/base"
+              ]
+            },
+            "scripts": [
+              "src/shared/utils/swiper.js"
+            ]
           },
           "configurations": {
             "production": {

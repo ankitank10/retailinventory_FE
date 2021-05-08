@@ -6,7 +6,6 @@ Import Base Files to re-use in components
 
 @import "./base/variables";
 @import "./base/mixins";
-//@import "./base/barlow-font";
 
 /*
 
@@ -15,11 +14,13 @@ Reset CSS and Bootstrap or Vendor SASS
 */
 @import "./base/reset";
 @import "./base/common";
-@import "./base/bulma.scss";
+// @import "./base/bootstrap";
 
 /*
     Custom Styles for Components as per Design System
 */
-
+// MDB SCSS
+@import "./base/bootstrap-overrides";
+@import "~mdb-angular-ui-kit/assets/scss/mdb.scss";
 
 @import "./base/typography";

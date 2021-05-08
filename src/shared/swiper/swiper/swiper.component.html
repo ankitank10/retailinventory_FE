@@ -1,0 +1,14 @@
+<div class="swiper-container supplier-slider" [id]="id">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper mb-8">
+        <!-- Slides -->
+        <ng-container #workCapitalSuppliersView *ngFor="let item of items; let i = index">
+            <ng-container *ngIf="swiperTemplateRef" [ngTemplateOutlet]="swiperTemplateRef"
+                [ngTemplateOutletContext]="{$implicit:item}">
+            </ng-container>
+        </ng-container>
+        ...
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination custom-pagination"></div>
+</div>

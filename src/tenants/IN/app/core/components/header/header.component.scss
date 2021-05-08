@@ -1,0 +1,125 @@
+@import "../../../../../../shared/assets/scss/base/variables";
+@import "../../../../../../shared/assets/scss/base/mixins";
+
+// @import "_mixins";
+// @import "~bootstrap/scss/bootstrap-grid.scss";
+
+.cart {
+  position: relative;
+  min-width: 150px;
+
+  &:hover {
+    .cart-dropdown {
+      display: block;
+    }
+  }
+  @include lg($max) {
+    &:hover {
+      .cart-dropdown {
+        display: none;
+      }
+    }
+  }
+
+  .qty {
+    position: absolute;
+    left: 20px;
+    top: -12px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 10px;
+    color: #fff;
+    background-color: $primary-color;
+  }
+  .cart-dropdown {
+    position: absolute;
+    width: 500px;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 1px 2px #e4e7ed;
+    box-shadow: 1px 1px 1px 2px #e4e7ed;
+    z-index: 99;
+    right: 0;
+    display: none;
+  }
+  .cart-list {
+    max-height: 180px;
+    overflow-y: scroll;
+    margin-bottom: 15px;
+  }
+  .cart-item {
+    .item-img {
+      width: 60px;
+      overflow: hidden;
+      img {
+        vertical-align: middle;
+        width: 100%;
+        object-fit: cover;
+        transition: 0.2s all;
+
+        &:hover {
+          transform: scale(1.4);
+        }
+      }
+    }
+    .item-body {
+      width: 300px;
+    }
+  }
+  .cart-summary {
+    border-bottom: 1px solid #e4e7ed;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-btns {
+    display: flex;
+    a {
+      flex: 1 0 auto;
+    }
+  }
+}
+
+.custom-menu {
+  position: relative;
+  &__content {
+    display: none;
+    padding: 24px;
+    position: absolute;
+    top: 100%;
+    border: 1px solid $primary-border-color;
+    box-shadow: 5px 5px 8px 0 $primary-border-color;
+    z-index: 99;
+    background: white;
+    min-width: 500px;
+  }
+  &:hover {
+    background-color: $primary-color;
+    .custom-menu__content {
+      display: block;
+    }
+  }
+  &__categories {
+    border-inline-end: 1px solid $primary-border-color;
+    a {
+      position: relative;
+      &::after {
+        content: "";
+        display: none;
+        height: 20px;
+        width: 4px;
+        background: $primary-color;
+        position: absolute;
+        right: -2px;
+        top: 0;
+      }
+      &:hover {
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 * {
-  font-family: "Barlow", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body,
 html {
-  font-family: "Barlow", sans-serif;
+  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -17,10 +17,6 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-.ff-barlow {
-  font-family: "Barlow", sans-serif !important;
 }
 
 /*common styling for border start*/
@@ -92,24 +88,13 @@ html {
   }
 }
 
-/*common styling for border end*/
-
-.stop-overflow {
-  flex-flow: row nowrap;
-
-  & > * {
-    flex: 1;
-  }
-}
-
 //can give height of full screen to the element
 .fill-height {
-  height: 100vh;
-  //  margin-top: -100px;  //to be inserted once the header is introduced
+  height: 100vh !important;
 }
 
 .fill-width {
-  width: 100%;
+  width: 100% !important;
 }
 
 .width-max-content {
@@ -206,34 +191,6 @@ label {
 
 .remove-hyperlink-decoration {
   text-decoration: none;
-}
-
-.separator {
-  width: 100%;
-  border-color: $secondary-grey2;
-  border-radius: 0.5px;
-  border-style: solid;
-  border-width: 1px;
-  border-top: 0;
-
-  &.vertical {
-    width: 1px;
-    height: 75px;
-    margin: 0 5px;
-    align-self: center;
-    border-right: 0;
-  }
-
-  &.no-sep-mobile {
-    @include md($max) {
-      display: none;
-    }
-  }
-
-  &.signature-vertical {
-    align-self: normal;
-    height: auto;
-  }
 }
 
 .round-div {

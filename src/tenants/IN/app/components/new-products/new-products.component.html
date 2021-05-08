@@ -1,0 +1,26 @@
+<div class="container my-3">
+    <div class="row gx-3">
+        <div *ngFor="let p of products" class="col-4 product-wrapper align-content-center">
+            <app-card>
+                <div class="product-wrapper d-flex flex-column p-4 col-md-4">
+                    <img [src]="p.image" alt="{{p.name}}" class="card-img-top" (click)="selectProduct(p.id)">
+                    <div class="product-header p-2">
+                        <p>{{p.name | titlecase}}</p>
+                    </div>
+                    <div class="product-body section-heading md">
+                        <h6>{{p.description.substr(0, 40)}} ....</h6>
+                        <p class="lead">{{p.price | currency:'USD'}}</p>
+                    </div>
+
+                    <div class="row d-flex justify-content-center border-primary my-3">
+                        <button class="btn btn-outline-primary btn-sm btn-block" [class.disabled]="p.quantity < 1"
+                            [class.btn-outline-danger]="p.quantity < 1" (click)="AddProduct(p.id)"
+                            [disabled]="p.quantity < 1">
+                            {{ p.quantity < 1 ? "NO STOCK" : "Add To Cart"}}
+                        </button>
+                    </div>
+                </div>
+            </app-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+@import "../../assets/scss/base/variables";
+
+.supplier-slider {
+  &.swiper-container {
+    width: 600px;
+    height: 300px;
+  }
+  .swiper-wrapper {
+    box-sizing: border-box;
+    .swiper-slide {
+      min-width: 260px;
+      max-width: 280px;
+      &.small {
+        width: 190px;
+        min-width: 190px;
+      }
+      &.medium {
+        width: 205px;
+        min-width: 205px;
+      }
+    }
+  }
+}
+.custom-pagination {
+  height: 15px;
+  position: absolute;
+  width: 100%;
+  bottom: 15px;
+  z-index: 1;
+  text-align: center;
+  .swiper-pagination-bullet {
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    background-color: gray;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px;
+    &.swiper-pagination-bullet-active {
+      background-color: red;
+    }
+  }
+}

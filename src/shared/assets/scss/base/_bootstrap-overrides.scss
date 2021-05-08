@@ -1,0 +1,175 @@
+// Bootstrap overrides //
+@import "variables";
+
+$white: $primary-white !default;
+$black: $primary-raisin-black !default;
+$rasberry: $primary-color !default;
+
+$primary: $primary-color !default;
+$primary-disabled: $primary-disabled !default;
+$secondary: $secondary-grey !default;
+$success: $greenish-teal !default;
+$link-color: $primary-color;
+$gray-50: #fbfbfb !default;
+$gray-900: #262626 !default;
+$body-bg: #edecf6;
+$text-muted: #616161;
+$info: #39c0ed !default;
+$warning: #ffa900 !default;
+$danger: #f93154 !default;
+$light: $gray-50 !default;
+$dark: $gray-900 !default;
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "white": $white,
+  "black": $black,
+) !default;
+$theme-colors: map-merge(
+  (
+    "primary": $text-muted,
+    "secondary": $success,
+  ),
+  $theme-colors
+);
+
+// $enable-gradients: false !default;
+// $enable-grid-classes: true !default;
+// $enable-deprecation-messages: true !default;
+
+// $paragraph-margin-bottom: 1rem !default;
+// $link-color: theme-color("primary") !default;
+// $link-decoration: none !default;
+// $link-hover-color: darken($link-color, 15%) !default;
+// $link-hover-decoration: none !default;
+// $emphasized-link-hover-darken-percentage: 15% !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1366px,
+  xxl: 1600px,
+) !default;
+
+// @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+// @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
+
+// $container-max-widths: (
+//   xs: 315px,
+//   sm: 506px,
+//   md: 720px,
+//   lg: 800px,
+//   xl: 980px,
+//   xxl: 1440px,
+// ) !default;
+
+// @include _assert-ascending($container-max-widths, "$container-max-widths");
+
+$grid-columns: 12 !default;
+$grid-row-columns: 6 !default;
+
+$line-height-lg: 1.5 !default;
+$line-height-sm: 1.1 !default;
+
+$border-width: 1px !default;
+$border-color: #dbdbdb !default;
+
+$border-radius: 5px !default;
+$border-radius-lg: 10px !default;
+$border-radius-sm: 2px !default;
+
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg: $font-size-base * 1.3 !default;
+$font-size-sm: $font-size-base * 0.875 !default;
+
+$font-weight-lighter: lighter !default;
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-semi-bold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
+
+$font-weight-base: $font-weight-normal !default;
+$line-height-base: 1.5 !default;
+
+$lead-font-size: $font-size-base * 1.25 !default;
+$lead-font-weight: 300 !default;
+
+$small-font-size: 80% !default;
+
+$zindex-sticky: 1020 !default;
+$zindex-fixed: 1030 !default;
+
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex,
+  inline-flex !default;
+$overflows: auto, hidden !default;
+$positions: static, relative, absolute, fixed, sticky !default;
+
+$spacer: 0.25 * $font-size-base !default;
+$spacers: () !default;
+$spacers: map-merge(
+  (
+    0: 0,
+    1: (
+      $spacer,
+    ),
+    2: (
+      $spacer * 2,
+    ),
+    3: (
+      $spacer * 3,
+    ),
+    4: (
+      $spacer * 4,
+    ),
+    5: (
+      $spacer * 5,
+    ),
+    6: (
+      $spacer * 6,
+    ),
+    7: (
+      $spacer * 7,
+    ),
+    8: (
+      $spacer * 8,
+    ),
+    9: (
+      $spacer * 9,
+    ),
+    10: (
+      $spacer * 10,
+    ),
+    15: (
+      $spacer * 15,
+    ),
+    20: (
+      $spacer * 20,
+    ),
+    24: (
+      $spacer * 24,
+    ),
+  ),
+  $spacers
+);
+$sizes: () !default;
+$sizes: map-merge(
+  (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto,
+  ),
+  $sizes
+);

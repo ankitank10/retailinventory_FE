@@ -1,137 +1,170 @@
-<!-- HEADER -->
-<header class="has-background-black is-flex is-flex-direction-column has-text-white">
-  <!-- TOP HEADER -->
-  <div class="container is-flex is-justify-content-space-between mt-1 fill-width">
-    <ul class="is-flex">
-      <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-      <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-      <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
-    </ul>
-    <ul class="is-flex">
-      <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-      <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-    </ul>
-  </div>
-  <!-- /TOP HEADER -->
+<!-- new code -->
 
-  <!-- MAIN HEADER -->
-  <div id="header">
-    <!-- container -->
-    <div class="container">
-      <!-- row -->
-      <div class="row">
-        <!-- LOGO -->
-        <div class="col-md-3">
-          <div class="header-logo">
-            <a routerLink="/" class="logo">
-              <img src="../../../assets/img/logo.png" alt="">
-            </a>
-          </div>
+<!-- <header class="header-wrapper mt-3 border-darken-2">
+  <div class="container main-header p-4">
+    <div class="main-header__topNav d-flex justify-content-between">
+      <ul class="d-flex">
+        <li class="mr-2"><a class="section-heading md white" href="#"><i class="fa fa-phone"></i> +91 22333 3333</a>
+        </li>
+        <li class="mr-2"><a class="section-heading md white" href="#"><i class="fa fa-envelope-o"></i>
+            email@email.com</a></li>
+      </ul>
+      <ul class="d-flex">
+        <li class="mr-2"><a class="section-heading md white" href="#"><i class="fa fa-dollar"></i> USD</a></li>
+        <li class="mr-2"><a class="section-heading md white" href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+      </ul>
+    </div>
+    <div class="main-header__mainNav d-flex justify-content-between">
+      <div class="logo">
+        <a routerLink="/" class="logo">
+          <h1 class="page-heading xxl white">Y Company</h1>
+        </a>
+      </div>
+      <div class="search">
+        <div class="header-search">
+          <form>
+            <select class="input-select">
+              <option value="0">All Categories</option>
+              <option value="1">Category 01</option>
+              <option value="2">Category 02</option>
+            </select>
+            <input class="input" placeholder="Search here">
+            <button class="search-btn">Search</button>
+          </form>
         </div>
-        <!-- /LOGO -->
+      </div>
+      <div class="cart dropdown">
+        <a class="d-flex flex-column" data-toggle="dropdown" aria-expanded="true" style="cursor: pointer;">
 
-        <!-- SEARCH BAR -->
-        <div class="col-md-6">
-          <div class="header-search">
-            <form>
-              <select class="input-select">
-                <option value="0">All Categories</option>
-                <option value="1">Category 01</option>
-                <option value="2">Category 02</option>
-              </select>
-              <input class="input" placeholder="Search here">
-              <button class="search-btn">Search</button>
-            </form>
+          <i class="fa fa-shopping-cart"></i>
+          <div (click)="isOpen = !isOpen">
+            <span class="mr-2">Your Cart</span>
+            <i class="fas fa-caret-down" *ngIf="!isOpen"></i>
+            <i class="fas fa-caret-up" *ngIf="isOpen"></i>
           </div>
-        </div>
-        <!-- /SEARCH BAR -->
 
-        <!-- ACCOUNT -->
-        <div class="col-md-3 clearfix">
-          <div class="header-ctn">
-            <!-- Wishlist -->
-            <div>
-              <a href="#">
-                <i class="fa fa-heart-o"></i>
-                <span>Your Wishlist</span>
-                <div class="qty">0</div>
-              </a>
+          <div class="qty">{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}}</div>
+        </a>
+        <div class="cart-dropdown" [ngStyle]="{'visibility': isOpen?'visible':'hidden'}">
+          <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
+            <div class="product-widget d-flex mb-2" *ngFor="let c of cartData.data; let i=index">
+              <div class="product-img mr-2">
+                <img src="{{c.product?.image}}" alt="">
+              </div>
+              <div class="product-body mr-2">
+                <span class="section-heading sm text-uppercase"><a href="#">{{c.product?.name}}</a></span>
+                <h4 class="product-price section-heading md"><span class="">{{c.numInCart}}
+                    x </span>{{c.product?.price | currency:'USD'}}</h4>
+              </div>
+              <button class="btn btn-primary btn-sm" (click)="cartService.DeleteProductFromCart(i)"
+                style="height: 30px;"><i class="fa fa-close"></i>
+              </button>
             </div>
-            <!-- /Wishlist -->
+          </div>
+          <div class="cart-summary">
+            <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} Item(s) selected</small>
+            <h5 class="section-heading md text-uppercase">TOTAL : {{cartTotal | currency:'USD'}}</h5>
+          </div>
+          <div class="cart-btns p-2">
+            <a class="btn btn-primary mr-4" routerLink="/cart">View Cart</a>
+            <a class="btn btn-secondary" routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-            <!-- Cart -->
-            <div class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="cursor: pointer;">
-                <i class="fa fa-shopping-cart"></i>
-                <span>Your Cart</span>
-              </a>
-              <div class="cart-dropdown">
-                <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
-                  <div class="product-widget" *ngFor="let c of cartData.data; let i=index">
-                    <div class="product-img">
-                      <img src="{{c.product?.image}}" alt="" width="20px">
-                    </div>
-                    <div class="product-body">
-                      <h3 class="product-name"><a href="#">{{c.product?.name}}</a></h3>
-                      <h4 class="product-price"><span class="qty">{{c.numInCart}}
-                        x </span>{{c.product?.price | currency:'USD'}}</h4>
-                    </div>
-                    <button class="delete" (click)="cartService.DeleteProductFromCart(i)"><i class="fa fa-close"></i>
-                    </button>
-                  </div>
+</header> -->
 
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top p-4 align-items-center main-header">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Navbar brand -->
+    <a class="navbar-brand display-4" href="#">Y Company</a>
 
-                </div>
-                <div class="cart-summary">
-                  <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} Item(s) selected</small>
-                  <h5>TOTAL : {{cartTotal | currency:'USD'}}</h5>
-                </div>
-                <div class="cart-btns">
-                  <a routerLink="/cart">View Cart</a>
-                  <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" (click)="basicNavbar.toggle()" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent" mdbCollapse
+      #basicNavbar="mdbCollapse">
+      <!-- Left links -->
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li> -->
+        <div class="custom-menu">
+          <button class="custom-menu__main">Dropdown
+          </button>
+          <div class="custom-menu__content rounded-2">
+            <div class="mb-2">
+              <h3 class="fs-3 fw-normal">Categories</h3>
+            </div>
+            <hr>
+            <div class="custom-menu__wrapper row mt-2">
+              <div class="custom-menu__categories d-flex flex-column col-4 py-4 ps-4 pe-0">
+                <a class="seudo-border-right m-2 me-0" id="cat_{{cat.id}}" *ngFor="let cat of mainCategories"
+                  (mouseenter)="populateSubCategories($event)" (click)="handleRouting($event)">{{cat.name}}</a>
+              </div>
+              <div class="custom-menu__subcategories d-flex flex-column col-8 p-4 " *ngIf="subcategory">
+                <a class="m-2 me-0" (click)="handleRouting($event)" id="subcat_{{subCat.id}}"
+                  *ngFor="let subCat of subcategory.subcategories">{{subCat.name}}</a>
               </div>
             </div>
-            <!-- /Cart -->
-
-            <!-- Menu Toogle -->
-            <div class="menu-toggle">
-              <a href="#">
-                <i class="fa fa-bars"></i>
-                <span>Menu</span>
-              </a>
-            </div>
-            <!-- /Menu Toogle -->
           </div>
         </div>
-        <!-- /ACCOUNT -->
-      </div>
-      <!-- row -->
-    </div>
-    <!-- container -->
-  </div>
-  <!-- /MAIN HEADER -->
-</header>
-<!-- /HEADER -->
-
-<!-- NAVIGATION -->
-<nav id="navigation">
-  <!-- container -->
-  <div class="container">
-    <!-- responsive-nav -->
-    <div id="responsive-nav">
-      <!-- NAV -->
-      <ul class="main-nav nav py-3">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="#">Games</a></li>
-        <li><a href="#">Contact Us</a></li>
-
       </ul>
-      <!-- /NAV -->
+      <!-- Left links -->
+
+      <!-- Search form -->
+      <form class="d-flex input-group w-auto">
+        <input type="search" class="form-control" placeholder="Type query" aria-label="Search" />
+        <button class="btn btn-primary" type="button">
+          Search
+        </button>
+      </form>
+
+      <div class="action-items d-flex align-items-center">
+        <a href="#" class="item m-2 cart"><i class="fas fa-cart-arrow-down fa-2x"></i>Your Cart
+          <div class="qty">{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}}</div>
+          <div class="cart-dropdown p-6">
+            <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
+              <div class="cart-item d-flex justify-content-between mb-3" *ngFor="let c of cartData.data; let i=index">
+                <div class="item-img mr-2">
+                  <img src="{{c.product?.image}}" alt="">
+                </div>
+                <div class="item-body mr-2">
+                  <span class="section-heading sm text-uppercase"><a href="#">{{c.product?.name}}</a></span>
+                  <h4 class="product-price section-heading md"><span class="">{{c.numInCart}}
+                      x </span>{{c.product?.price | currency:'USD'}}</h4>
+                </div>
+                <button class="btn btn-primary btn-sm" (click)="cartService.DeleteProductFromCart(i)"
+                  style="height: 30px;"><i class="fa fa-close"></i>
+                </button>
+              </div>
+            </div>
+            <div class="cart-summary">
+              <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} Item(s) selected</small>
+              <h5 class="section-heading md text-uppercase">TOTAL : {{cartTotal | currency:'USD'}}</h5>
+            </div>
+            <div class="cart-btns p-2">
+              <a class="btn btn-primary m-2" routerLink="/cart">View Cart</a>
+              <a class="btn btn-secondary m-2" routerLink="/checkout">Checkout <i
+                  class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+        </a>
+
+        <a href="#" class="item m-2"><i class="fas fa-cart-arrow-down fa-2x"></i>Login/Signup</a>
+      </div>
+
     </div>
-    <!-- /responsive-nav -->
+    <!-- Collapsible wrapper -->
   </div>
-  <!-- /container -->
+  <!-- Container wrapper -->
 </nav>
-<!-- /NAVIGATION -->
+<!-- Navbar -->

@@ -1,0 +1,22 @@
+<div class="cat-item p-5" *ngIf="product">
+    <a class="category_name" [routerLink]="['/product/'+product.id]" [title]="product.name">
+        <span class="cat-img mb-4">
+            <img class="product-image-photo" [src]="product.image" [alt]="product.name" />
+        </span>
+        <span class="save-badge" *ngIf="product.discount">{{product.discount}}%</span>
+        <div class="product_desc">
+            <span class="page-heading md">{{product.name | titlecase}}</span>
+            <h6>{{product.description.substr(0, 30)}} ....</h6>
+        </div>
+    </a>
+    <span class="price-box">
+        <span id="original_price" class="me-2"
+            [ngStyle]="{ textDecoration: product.discount ? 'line-through' : 'none'}">{{product.price | currency:'USD'}}</span>
+        <span id="final_price" *ngIf="product.discount">{{discountedPrice | currency:'USD'}}</span>
+    </span>
+    <button class="btn btn-primary btn-block mt-3" [class.disabled]="product.quantity < 1"
+        [class.btn-outline-danger]="product.quantity < 1" (click)="AddProduct(product.id)"
+        [disabled]="product.quantity < 1">
+        {{ product.quantity < 1 ? "NO STOCK" : "Add To Cart"}}
+    </button>
+</div>
