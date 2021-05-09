@@ -4,7 +4,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Its a teant based angule structure, so following are the ng commands as per the tenant. IN is the default tenant:
+
+"scripts": {
+"ng": "ng",
+"start-IN": "ng serve IN",
+"build-IN": "ng build IN --aot --prod",
+"test-IN": "ng test IN",
+"lint-IN": "ng lint IN",
+"e2e-IN": "ng e2e IN"
+}
+
+Run `ng serve IN` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
