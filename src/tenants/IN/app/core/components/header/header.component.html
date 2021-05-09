@@ -98,7 +98,7 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li> -->
         <div class="custom-menu">
-          <button class="custom-menu__main">Dropdown
+          <button class="custom-menu__main">Categories
           </button>
           <div class="custom-menu__content rounded-2">
             <div class="mb-2">
@@ -106,7 +106,7 @@
             </div>
             <hr>
             <div class="custom-menu__wrapper row mt-2">
-              <div class="custom-menu__categories d-flex flex-column col-4 py-4 ps-4 pe-0">
+              <div class="custom-menu__categories d-flex flex-column col-md-4 col-6 py-4 ps-4 pe-0">
                 <a class="seudo-border-right m-2 me-0" id="cat_{{cat.id}}" *ngFor="let cat of mainCategories"
                   (mouseenter)="populateSubCategories($event)" (click)="handleRouting($event)">{{cat.name}}</a>
               </div>

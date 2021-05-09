@@ -122,4 +122,9 @@
       }
     }
   }
+  @include md($max) {
+    &__content {
+      min-width: 300px;
+    }
+  }
 }

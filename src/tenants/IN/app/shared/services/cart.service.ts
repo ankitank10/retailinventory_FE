@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ProductService } from './product.service';
 import { BehaviorSubject } from 'rxjs';
 import { CartModelPublic, CartModelServer } from '../models/cart.model';
 import { ProductModelServer } from '../models/product.model';
@@ -7,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { NavigationExtras, Router } from '@angular/router';
 import { OrderService } from './order.service';
 import { environment } from '../../../environments/environment';
+import { FacadeService } from './facade.service';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class CartService {
   cartDataObs$ = new BehaviorSubject<CartModelServer>(this.cartDataServer);
 
 
-  constructor(private productService: ProductService,
+  constructor(private facadeService: FacadeService,
     private orderService: OrderService,
     private httpClient: HttpClient,
     private router: Router) {
@@ -48,7 +48,7 @@ export class CartService {
       this.cartDataClient = info;
       // Loop through each entry and put it in the cartDataServer object
       this.cartDataClient.prodData.forEach(p => {
-        this.productService.getSingleProduct(p.id).subscribe((actualProdInfo: ProductModelServer) => {
+        this.facadeService.getSingleProduct({ productId: p.id }).subscribe((actualProdInfo: ProductModelServer) => {
           if (this.cartDataServer.data[0].numInCart === 0) {
             this.cartDataServer.data[0].numInCart = p.incart;
             this.cartDataServer.data[0].product = actualProdInfo;
@@ -82,7 +82,7 @@ export class CartService {
 
   AddProductToCart(id: number, quantity?: number) {
 
-    this.productService.getSingleProduct(id).subscribe(prod => {
+    this.facadeService.getSingleProduct({ productId: id }).subscribe(prod => {
       // If the cart is empty
       if (this.cartDataServer.data[0].product === undefined) {
         this.cartDataServer.data[0].product = prod;

@@ -6,6 +6,8 @@ import { CategoryViewComponent } from './category-view/category-view.component';
 import { TreeModule } from '../../../../shared/tree/tree.module';
 import { SwiperModule } from '../../../../shared/swiper/swiper.module';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CoreModule } from '../core/core.module';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { SharedModule } from '../shared/shared.module';
     CategoryRoutingModule,
     TreeModule,
     SwiperModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CategoryModule { }

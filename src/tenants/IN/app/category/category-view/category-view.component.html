@@ -1,9 +1,20 @@
-<div class="container-fluid mt-4 d-flex bg-white">
-    <div class="filter_wrapper">
-        <app-tree [treeData]="categoryNodes"></app-tree>
+<div class="container-fluid mt-4 d-flex bg-white cat_wrapper">
+    <div class="filter_wrapper d-md-block d-none">
+        <app-tree [treeData]="categoryNodes" (treeNodeClicked)="handleCategoryChange($event)"></app-tree>
     </div>
     <div class="content_wrapper">
-        <app-swiper [items]="products" [id]="'productsCardSlider'">
+        <h3 class="page-heading xl mb-5">Products</h3>
+        <div class="product-list d-flex flex-wrap mb-5" *ngIf="products.length">
+            <div class="product-card m-4 border border-2 rounded-3" *ngFor="let item of products">
+                <app-product-card [product]="item"></app-product-card>
+            </div>
+        </div>
+        <h2 class="page-heading lg mb-5" *ngIf="!products.length">No Products found</h2>
+
+        <h3 class="page-heading xl mb-5 ">Offer Products</h3>
+        <h2 class="page-heading lg" *ngIf="!discountedProducts.length">No Products found</h2>
+        <app-swiper [items]="discountedProducts" [id]="'productsCardSlider'" *ngIf="discountedProducts.length"
+            [breakpoints]="productCardSwiperBreakpoints">
             <ng-template let-item #swiperTemplateRef>
                 <div class="swiper-slide product-wrapper d-flex flex-column p-4 col-md-4">
                     <app-product-card [product]="item"></app-product-card>

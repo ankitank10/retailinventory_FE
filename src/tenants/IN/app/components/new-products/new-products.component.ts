@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductModelServer, ServerResponse } from '../../shared/models/product.model';
-import { ProductService } from '../../shared/services/product.service';
 import { CartService } from '../../shared/services/cart.service';
 import { Router } from '@angular/router';
 
@@ -13,9 +12,7 @@ export class NewProductsComponent implements OnInit {
 
   @Input() products: ProductModelServer[] = [];
 
-  constructor(private productService: ProductService,
-    private cartService: CartService,
-    private router: Router) {
+  constructor(private cartService: CartService, private router: Router) {
   }
 
   ngOnInit() {

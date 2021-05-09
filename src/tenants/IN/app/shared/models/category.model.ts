@@ -15,4 +15,14 @@ export interface CategoryBanner {
     categoryId?: number;
 }
 
+export interface QueryModel {
+    limit?: number;
+    isDiscounted?: boolean;
+    discountMin?: number;
+    discountMax?: number;
+    color?: number;
+    priceMin?: number;
+    priceMax?: number;
+}
+
 

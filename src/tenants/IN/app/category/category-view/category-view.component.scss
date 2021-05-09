@@ -1,3 +1,19 @@
+@import "variables";
+@import "mixins";
+
+.cat_wrapper {
+  padding: 40px;
+}
 .filter_wrapper {
-  min-width: 300px;
+  width: 20%;
+}
+
+.content_wrapper {
+  width: 80%;
+}
+
+@include md($max) {
+  .cat_wrapper {
+    padding: 10px;
+  }
 }

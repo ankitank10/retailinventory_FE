@@ -25,7 +25,9 @@ export class ApiClient {
         if (options.routeParams) {
             routeURL = this.createRouteURL(routeURL, options.routeParams);
         }
-        return this.http.get(routeURL);
+        return this.http.get(routeURL, {
+            params: queryParams,
+        });
     }
 
     private createQueryParams(query: any): HttpParams {

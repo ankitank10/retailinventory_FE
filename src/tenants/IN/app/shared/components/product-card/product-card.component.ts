@@ -9,6 +9,9 @@ import { CartService } from '../../services/cart.service';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: ProductModelServer;
+  @Input() isBig = false;
+
+
   discountedPrice = 0;
   constructor(private cartService: CartService) { }
 

@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { BasicComponentsModule } from '../../../shared/basic-components/basic-components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from './home/home.module';
+import { TreeModule } from '../../../shared/tree/tree.module';
 
 
 @NgModule({
@@ -18,8 +18,10 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     CoreModule,
     HomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TreeModule
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })

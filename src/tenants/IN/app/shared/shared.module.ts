@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const components = [
   ProductCardComponent,
   BannerComponent,
@@ -11,7 +12,9 @@ const components = [
   declarations: [...components],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ...components

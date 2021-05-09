@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TreeNode } from './tree.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { TreeNode } from './tree.model';
 export class TreeComponent implements OnInit {
 
   @Input() treeData: TreeNode[];
+  @Output() treeNodeClicked = new EventEmitter();
 
   ngOnInit() {
   }
@@ -16,8 +17,8 @@ export class TreeComponent implements OnInit {
   toggleChild(node: TreeNode) {
     node.expanded = !node.expanded;
   }
-  handleClick(node) {
-    console.log(node);
+  handleClick(node, subnode?) {
+    this.treeNodeClicked.emit({ node, subnode });
   }
 
 }

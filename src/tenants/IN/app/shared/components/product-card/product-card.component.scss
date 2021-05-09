@@ -6,7 +6,11 @@
   padding: 12px;
   margin: 0;
   background-color: $primary-white;
-  border-radius: 8px;
+  border-radius: 20px;
+  &.big {
+    width: 400px;
+    height: 500px;
+  }
   &.small {
     width: 250px;
     height: 275px;
@@ -17,17 +21,27 @@
   }
   .product_desc {
     height: 80px;
+    &.big {
+      padding: 20px;
+      height: 100px;
+    }
   }
   .cat-img {
     margin: 0 auto;
     height: 150px;
     display: block;
     text-align: center;
-
     img {
       width: 150px !important;
-      height: 150px !important;
+      height: 100%;
       margin: 0 auto;
+    }
+    &.big {
+      height: 200px;
+      background-color: $radio-border;
+      img {
+        width: 250px !important;
+      }
     }
   }
 }

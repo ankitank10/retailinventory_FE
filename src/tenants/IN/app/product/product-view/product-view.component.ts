@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { ProductService } from '../../shared/services/product.service';
 import { ProductModelServer } from '../../shared/models/product.model';
+import { FacadeService } from '../../shared/services/facade.service';
 
 @Component({
   selector: 'app-product-view',
@@ -11,15 +11,15 @@ import { ProductModelServer } from '../../shared/models/product.model';
 export class ProductViewComponent implements OnInit {
   routeParams: any = {};
   product: ProductModelServer;
-  constructor(private router: Router, public route: ActivatedRoute, private productService: ProductService) {
+  constructor(private router: Router, public route: ActivatedRoute, private facadeService: FacadeService) {
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
       (params: ParamMap) => {
         this.routeParams.productId = +params.get('productId');
-        this.productService.getSingleProduct(this.routeParams).subscribe((res: ProductModelServer) => {
-          console.log(res);
+        this.facadeService.getSingleProduct(this.routeParams).subscribe((res: ProductModelServer) => {
+          this.product = res;
 
         });
       }

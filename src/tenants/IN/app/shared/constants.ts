@@ -7,27 +7,27 @@ export const MAIN_CATEGORIES = [
         active: false,
         subcategories: [
             {
-                id: 1,
-                name: 'Top Wear',
-                level: 2,
-            },
-            {
-                id: 2,
-                name: 'Bottom Wear',
-                level: 2
-            },
-            {
                 id: 3,
-                name: 'Men',
+                name: 'Shorts',
                 level: 2,
             },
             {
                 id: 4,
-                name: 'Kids',
+                name: 'Shirts',
+                level: 2
+            },
+            {
+                id: 1,
+                name: 'Men',
                 level: 2,
             },
             {
                 id: 5,
+                name: 'Bottom Wear',
+                level: 2,
+            },
+            {
+                id: 3,
                 name: 'Women',
                 level: 2,
             }
@@ -41,27 +41,22 @@ export const MAIN_CATEGORIES = [
         expanded: false,
         subcategories: [
             {
-                id: 1,
+                id: 8,
                 name: 'Shoes',
                 level: 2,
             },
             {
-                id: 2,
-                name: 'Flip Flops',
+                id: 9,
+                name: 'Sleepers',
                 level: 2,
             },
             {
-                id: 3,
+                id: 6,
                 name: 'Men',
                 level: 2,
             },
             {
-                id: 4,
-                name: 'Kids',
-                level: 2,
-            },
-            {
-                id: 5,
+                id: 7,
                 name: 'Women',
                 level: 2,
             }
@@ -74,18 +69,33 @@ export const MAIN_CATEGORIES = [
         expanded: false,
         subcategories: [
             {
-                id: 1,
+                id: 10,
                 name: 'Men',
                 level: 2,
             },
             {
-                id: 2,
+                id: 12,
                 name: 'Kids',
                 level: 2,
             },
             {
-                id: 3,
+                id: 11,
                 name: 'Women',
+                level: 2,
+            },
+            {
+                id: 13,
+                name: 'Backpacks',
+                level: 2,
+            },
+            {
+                id: 14,
+                name: 'Sumglasses',
+                level: 2,
+            },
+            {
+                id: 15,
+                name: 'Gaming',
                 level: 2,
             }
         ]

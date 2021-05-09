@@ -14,22 +14,17 @@ export class ProductService {
   constructor(private http: HttpClient, private apiService: ApiService) {
   }
 
-  getAllProducts(limitOfResults = 10): Observable<ServerResponse> {
-    return this.http.get<ServerResponse>(this.url + 'products', {
-      params: {
-        limit: limitOfResults.toString()
-      }
-    });
+  getAllProducts(routeParams, query): Observable<any> {
+    return this.apiService.ApiClientObj.get(`${this.url}products`, { routeParams, query });
+
   }
 
   getSingleProduct(routeParams): Observable<any> {
-    return this.apiService.ApiClientObj.get(`${this.url}products/:productId/`, { routeParams });
-    // return this.http.get<ProductModelServer>(this.url + 'products/' + id);
+    return this.apiService.ApiClientObj.get(`${this.url}products/:productId`, { routeParams });
   }
 
-  getProductsFromCategory(routeParams): Observable<any> {
-    return this.apiService.ApiClientObj.get(`${this.url}products/category/:catId/:subCatId`, { routeParams });
-    // return this.http.get<ProductModelServer[]>(this.url + `products/category/${routeParams.catId}/${routeParams.subCatId}`);
+  getProductsFromCategory(routeParams, query): Observable<any> {
+    return this.apiService.ApiClientObj.get(`${this.url}products/category/:catId/:subCatId`, { routeParams, query });
   }
 
 }

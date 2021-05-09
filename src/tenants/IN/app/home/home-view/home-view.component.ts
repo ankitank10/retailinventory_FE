@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../shared/services/product.service';
 import { ServerResponse, ProductModelServer } from '../../shared/models/product.model';
-import { CategoryBanner } from '../../shared/models/category.model';
+import { CategoryBanner, QueryModel } from '../../shared/models/category.model';
 import { BANNER_ITEMS } from '../constants';
+import { FacadeService } from '../../shared/services/facade.service';
 
 @Component({
   selector: 'app-home-view',
@@ -20,6 +20,16 @@ export class HomeViewComponent implements OnInit {
       spaceBetween: 20,
     },
   };
+  productCardSwiperBigBreakpoints = {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 15,
+    },
+    1024: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+  };
   bannerSwiperBreakpoints = {
     0: {
       slidesPerView: 1,
@@ -32,11 +42,30 @@ export class HomeViewComponent implements OnInit {
   };
   products: ProductModelServer[] = [];
   banners: CategoryBanner[] = [...BANNER_ITEMS];
-  constructor(private productService: ProductService) { }
+  query: QueryModel;
+  routeParams: any = {};
+  discountedProducts: ProductModelServer[] = [];
+  constructor(private facadeService: FacadeService) { }
 
   ngOnInit(): void {
-    this.productService.getAllProducts(10).subscribe((prods: ServerResponse) => {
+    this.query = {
+      limit: 10,
+      isDiscounted: false
+    };
+    this.getDiscountedProds();
+
+    this.facadeService.getAllProducts(this.routeParams, this.query).subscribe((prods: ServerResponse) => {
       this.products = prods.products;
+    });
+  }
+
+  getDiscountedProds() {
+    this.query = {
+      limit: 10,
+      isDiscounted: true
+    };
+    this.facadeService.getAllProducts(this.routeParams, this.query).subscribe((res: ServerResponse) => {
+      this.discountedProducts = res.products ? res.products : [];
     });
   }
 

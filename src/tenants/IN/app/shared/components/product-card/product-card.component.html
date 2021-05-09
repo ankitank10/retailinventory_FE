@@ -1,15 +1,15 @@
-<div class="cat-item p-5" *ngIf="product">
+<div class="cat-item p-5" *ngIf="product" [ngClass]="{'big': isBig}">
     <a class="category_name" [routerLink]="['/product/'+product.id]" [title]="product.name">
-        <span class="cat-img mb-4">
+        <div class="cat-img mb-4" [ngClass]="{'big': isBig}">
             <img class="product-image-photo" [src]="product.image" [alt]="product.name" />
-        </span>
+        </div>
         <span class="save-badge" *ngIf="product.discount">{{product.discount}}%</span>
-        <div class="product_desc">
+        <div class="product_desc" [ngClass]="{'big': isBig}">
             <span class="page-heading md">{{product.name | titlecase}}</span>
             <h6>{{product.description.substr(0, 30)}} ....</h6>
         </div>
     </a>
-    <span class="price-box">
+    <span class="price-box" [ngClass]="{'p-5': isBig}">
         <span id="original_price" class="me-2"
             [ngStyle]="{ textDecoration: product.discount ? 'line-through' : 'none'}">{{product.price | currency:'USD'}}</span>
         <span id="final_price" *ngIf="product.discount">{{discountedPrice | currency:'USD'}}</span>
